@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  promarket-backend:
+    container_name: promarket-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    restart: always 
+
+  promarket-frontend:
+    container_name: promarket-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on: 
+      - promarket-backend
+    ports:
+      - 80:3000
+    restart: always     
